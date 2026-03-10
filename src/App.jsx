@@ -38,7 +38,7 @@ function App() {
       />
       <Cursor />
       <Nav />
-      <main className="pt-24">
+      <main>
         <AnimatePresence mode="wait">
           <Suspense fallback={null}>
             <PageTransition routeKey={location.pathname}>

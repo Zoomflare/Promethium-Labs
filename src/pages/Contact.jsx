@@ -16,13 +16,9 @@ const ContactPage = () => {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
-
-    document.querySelectorAll(".rev, .rev-left, .rev-right, .rev-scale").forEach((el) => {
-      revObs.observe(el);
-    });
-
+    document.querySelectorAll(".rev, .rev-left, .rev-right, .rev-up").forEach((el) => revObs.observe(el));
     return () => revObs.disconnect();
   }, []);
 
@@ -34,7 +30,6 @@ const ContactPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    
     const { fn, em, msg } = formData;
     if (!fn || !em || !msg) {
       const form = document.querySelector(".ct-form");
@@ -44,55 +39,61 @@ const ContactPage = () => {
       }
       return;
     }
-
     setSubmitted(true);
   };
 
   return (
-    <main className="min-h-screen bg-ink text-cream overflow-x-hidden">
+    <main className="min-h-screen bg-cream text-ink overflow-x-hidden">
       <section className="grid min-h-screen grid-cols-1 lg:grid-cols-2">
-        {/* Left copy */}
-        <div className="flex flex-col justify-center gap-8 px-6 py-24 md:px-16 rev-left">
-          <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-greenMid">
+
+        {/* ── LEFT COPY PANEL ────────────────────────────── */}
+        <div
+          className="flex flex-col justify-center gap-10 px-8 py-28 md:px-16 rev-left border-b lg:border-b-0 border-ink/[0.08]"
+          style={{ borderRight: "1px solid rgba(13,13,8,0.08)" }}
+        >
+          <p className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-greenMid">
             Get in touch
           </p>
-          <h1 className="font-serif text-[clamp(2.5rem,5vw,3.8rem)] leading-[1.02] tracking-[-0.03em]">
+
+          {/* OkAlpha-style display headline */}
+          <h1 className="section-h text-[clamp(2.8rem,5.5vw,4.5rem)]">
             Let&apos;s make
             <br />
-            <span className="italic text-greenMid">something</span>
+            <em className="not-italic text-greenMid">something</em>
             <br />
             worth making.
           </h1>
-          <p className="max-w-md text-sm md:text-base text-cream/60 leading-relaxed font-light">
-            A product idea you can’t shake, a brand that deserves better
-            marketing, or an internship you wish existed — send it over. We read
-            every message ourselves.
-          </p>
-          <div className="space-y-4 text-sm mt-4">
+
+          <div className="rule-top pt-8 space-y-4 text-sm">
+            <p className="text-gray/80 text-[0.95rem] leading-[1.85] font-light max-w-sm">
+              A product idea you can&apos;t shake, a brand that deserves better marketing, or an
+              internship you wish existed — send it over. We read every message ourselves.
+            </p>
+
+            {/* Email link — OkAlpha large text link style */}
             <a
               href="mailto:hello@promethiumlabs.in"
-              className="flex items-center gap-4 rounded-xl border border-white/5 bg-white/[0.02] px-6 py-4 transition-all hover:border-greenMid/30 hover:bg-white/[0.05]"
+              className="group flex items-center gap-3 text-ink/80 hover:text-greenMid transition-colors duration-200 pt-2"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-base">
-                ✉️
+              <span className="text-[0.65rem] font-mono uppercase tracking-[0.16em] text-gray/50">
+                Email us →
               </span>
-              <span>
-                <span className="block text-[0.65rem] font-mono uppercase tracking-[0.16em] text-white/40">
-                  Email
-                </span>
-                <span className="text-white/80">hello@promethiumlabs.in</span>
+              <span className="font-sans font-semibold text-[0.95rem] tracking-[-0.01em]">
+                hello@promethiumlabs.in
               </span>
             </a>
-            <div className="flex gap-4">
+
+            {/* Social links — flat bordered */}
+            <div className="flex gap-3 pt-2">
               <a
                 href="#"
-                className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-white/5 bg-white/[0.02] py-4 text-white/40 transition-all hover:border-greenMid/30 hover:text-white"
+                className="text-[0.7rem] font-mono uppercase tracking-[0.1em] border border-ink/15 px-4 py-2.5 text-ink/50 hover:border-greenMid hover:text-greenMid transition-all duration-200"
               >
                 LinkedIn
               </a>
               <a
                 href="#"
-                className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-white/5 bg-white/[0.02] py-4 text-white/40 transition-all hover:border-greenMid/30 hover:text-white"
+                className="text-[0.7rem] font-mono uppercase tracking-[0.1em] border border-ink/15 px-4 py-2.5 text-ink/50 hover:border-greenMid hover:text-greenMid transition-all duration-200"
               >
                 Instagram
               </a>
@@ -100,16 +101,18 @@ const ContactPage = () => {
           </div>
         </div>
 
-        {/* Right form */}
-        <div className="flex items-center bg-[#fcfaf7] text-ink px-6 py-24 md:px-16 rev-right">
-          <div className="ct-form mx-auto w-full max-w-md rounded-2xl border border-ink/5 bg-cream p-10 shadow-2xl relative">
+        {/* ── RIGHT FORM PANEL ───────────────────────────── */}
+        <div className="flex items-center bg-ink px-8 py-28 md:px-16 rev-right">
+          <div className="ct-form mx-auto w-full max-w-md">
             {!submitted ? (
               <>
-                <h2 className="font-serif text-2xl mb-2">Send us a message</h2>
-                <p className="mb-8 text-sm text-gray/60 leading-relaxed font-light">
+                <h2 className="section-h text-[1.75rem] text-cream mb-2">Send us a message</h2>
+                <p className="mb-10 text-[0.9rem] text-cream/40 leading-relaxed font-light">
                   Tell us what you&apos;re working on, where you are, and what success looks like.
                 </p>
-                <form className="space-y-6" onSubmit={handleSubmit}>
+
+                {/* OkAlpha: white bottom-border-only inputs, no rounded corners */}
+                <form className="space-y-8" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div className="cf-g">
                       <input
@@ -118,9 +121,11 @@ const ContactPage = () => {
                         required
                         placeholder="Arjun"
                         onChange={handleInputChange}
-                        className="w-full border-b border-ink/10 bg-transparent py-2 text-sm outline-none focus:border-greenMid transition-all placeholder:opacity-0"
+                        className="w-full border-b border-cream/15 bg-transparent py-2.5 text-[0.9rem] text-cream outline-none focus:border-greenMid transition-colors placeholder:opacity-0"
                       />
-                      <label htmlFor="fn" className="absolute left-0 top-2 text-[0.65rem] font-mono uppercase tracking-widest text-gray/40">First Name</label>
+                      <label htmlFor="fn" className="absolute left-0 top-2.5 text-[0.6rem] font-mono uppercase tracking-widest text-cream/30">
+                        First Name
+                      </label>
                     </div>
                     <div className="cf-g">
                       <input
@@ -128,11 +133,14 @@ const ContactPage = () => {
                         type="text"
                         placeholder="Sharma"
                         onChange={handleInputChange}
-                        className="w-full border-b border-ink/10 bg-transparent py-2 text-sm outline-none focus:border-greenMid transition-all placeholder:opacity-0"
+                        className="w-full border-b border-cream/15 bg-transparent py-2.5 text-[0.9rem] text-cream outline-none focus:border-greenMid transition-colors placeholder:opacity-0"
                       />
-                      <label htmlFor="ln" className="absolute left-0 top-2 text-[0.65rem] font-mono uppercase tracking-widest text-gray/40">Last Name</label>
+                      <label htmlFor="ln" className="absolute left-0 top-2.5 text-[0.6rem] font-mono uppercase tracking-widest text-cream/30">
+                        Last Name
+                      </label>
                     </div>
                   </div>
+
                   <div className="cf-g">
                     <input
                       id="em"
@@ -140,24 +148,27 @@ const ContactPage = () => {
                       required
                       placeholder="you@example.com"
                       onChange={handleInputChange}
-                      className="w-full border-b border-ink/10 bg-transparent py-2 text-sm outline-none focus:border-greenMid transition-all placeholder:opacity-0"
+                      className="w-full border-b border-cream/15 bg-transparent py-2.5 text-[0.9rem] text-cream outline-none focus:border-greenMid transition-colors placeholder:opacity-0"
                     />
-                    <label htmlFor="em" className="absolute left-0 top-2 text-[0.65rem] font-mono uppercase tracking-widest text-gray/40">Email</label>
+                    <label htmlFor="em" className="absolute left-0 top-2.5 text-[0.6rem] font-mono uppercase tracking-widest text-cream/30">
+                      Email
+                    </label>
                   </div>
+
                   <div className="cf-g">
                     <select
                       id="sv"
-                      required
                       onChange={handleInputChange}
-                      className="w-full border-b border-ink/10 bg-transparent py-2 text-sm outline-none focus:border-greenMid transition-all"
+                      className="w-full border-b border-cream/15 bg-transparent py-2.5 text-[0.9rem] text-cream/60 outline-none focus:border-greenMid transition-colors"
                     >
-                      <option value="">I&apos;m interested in...</option>
-                      <option key="opt-1" value="Internship Program">Internship Program</option>
-                      <option key="opt-2" value="Digital Marketing">Digital Marketing</option>
-                      <option key="opt-3" value="Product Development">Product Development</option>
-                      <option key="opt-4" value="Something Else">Something Else</option>
+                      <option value="" className="bg-ink">I&apos;m interested in...</option>
+                      <option value="Internship Program" className="bg-ink">Internship Program</option>
+                      <option value="Digital Marketing" className="bg-ink">Digital Marketing</option>
+                      <option value="Product Development" className="bg-ink">Product Development</option>
+                      <option value="Something Else" className="bg-ink">Something Else</option>
                     </select>
                   </div>
+
                   <div className="cf-g">
                     <textarea
                       id="msg"
@@ -165,34 +176,38 @@ const ContactPage = () => {
                       required
                       placeholder="Your message"
                       onChange={handleInputChange}
-                      className="w-full border-b border-ink/10 bg-transparent py-2 text-sm outline-none focus:border-greenMid transition-all placeholder:opacity-0"
+                      className="w-full border-b border-cream/15 bg-transparent py-2.5 text-[0.9rem] text-cream outline-none focus:border-greenMid transition-colors resize-none placeholder:opacity-0"
                     />
-                    <label htmlFor="msg" className="absolute left-0 top-2 text-[0.65rem] font-mono uppercase tracking-widest text-gray/40">Message</label>
+                    <label htmlFor="msg" className="absolute left-0 top-2.5 text-[0.6rem] font-mono uppercase tracking-widest text-cream/30">
+                      Message
+                    </label>
                   </div>
+
+                  {/* OkAlpha flat submit — no border-radius */}
                   <button
                     type="submit"
                     ref={submitRef}
-                    className="cf-submit mt-4 w-full rounded-sm bg-ink px-6 py-4 text-xs font-mono uppercase tracking-[0.2em] text-cream transition-all hover:bg-greenMid"
+                    className="cf-submit mt-2 w-full bg-greenMid text-cream py-4 text-[0.75rem] font-sans font-bold tracking-[0.12em] uppercase transition-all duration-300 hover:bg-green"
+                    style={{ borderRadius: 0 }}
                   >
                     Send Message ✦
                   </button>
                 </form>
               </>
             ) : (
-              <div className="flex flex-col items-center justify-center min-h-[350px] text-center gap-6 animate-scaleIn">
-                <div className="w-16 h-16 rounded-full bg-greenPale border-2 border-greenMid flex items-center justify-center text-2xl">
+              <div className="flex flex-col items-center justify-center min-h-[350px] text-center gap-6 animate-[fadeIn_0.5s_ease]">
+                <div className="w-14 h-14 border border-greenMid flex items-center justify-center text-xl text-greenMid">
                   ✓
                 </div>
-                <div className="font-serif text-2xl font-light">
-                  We got it.
-                </div>
-                <p className="text-sm text-gray/60 leading-relaxed max-w-[280px] font-light">
+                <div className="section-h text-[2rem] text-cream">We got it.</div>
+                <p className="text-[0.9rem] text-cream/40 leading-relaxed max-w-[280px] font-light">
                   Expect a reply within 24 hours. We read every message personally.
                 </p>
               </div>
             )}
           </div>
         </div>
+
       </section>
     </main>
   );

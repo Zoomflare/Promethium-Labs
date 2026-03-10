@@ -1,4 +1,6 @@
-/* Home hero blobs & grain (inspired by reference HTML) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HOME HERO — blobs & grain
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .hero {
   position: relative;
   overflow: hidden;
@@ -8,91 +10,95 @@
   position: absolute;
   pointer-events: none;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.35;
+  filter: blur(90px);
+  opacity: 0.18; /* Flatter, OkAlpha is not gradient-heavy */
 }
 
 .hero-blob-1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(180, 235, 200, 0.25), transparent 70%);
-  top: -100px;
-  right: -100px;
-  animation: blobdrift1 16s ease-in-out infinite;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(45, 186, 110, 0.3), transparent 70%);
+  top: -150px;
+  right: -150px;
+  animation: blobdrift1 20s ease-in-out infinite;
 }
 
 .hero-blob-2 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(180, 235, 200, 0.15), transparent 70%);
-  bottom: 100px;
-  left: -80px;
-  animation: blobdrift2 20s ease-in-out infinite;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(0, 230, 118, 0.15), transparent 70%);
+  bottom: 80px;
+  left: -100px;
+  animation: blobdrift2 24s ease-in-out infinite;
 }
 
 .hero-blob-3 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(212, 240, 220, 0.18), transparent 70%);
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(200, 245, 215, 0.2), transparent 70%);
   top: 40%;
   left: 40%;
-  animation: blobdrift3 14s ease-in-out infinite;
+  animation: blobdrift3 18s ease-in-out infinite;
 }
 
 .hero-blob-4 {
   position: absolute;
   pointer-events: none;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(26, 122, 74, 0.06), transparent 65%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(26, 122, 74, 0.04), transparent 65%);
   top: -200px;
   left: -200px;
-  animation: blobdrift4 28s ease-in-out infinite;
-  filter: blur(100px);
+  animation: blobdrift4 30s ease-in-out infinite;
+  filter: blur(120px);
   z-index: 0;
 }
 
 @keyframes blobdrift1 {
-  0% { transform: translate(0, 0) scale(1); filter: blur(80px); }
-  33% { transform: translate(-30px, 20px) scale(1.08); filter: blur(90px); }
-  66% { transform: translate(20px, -15px) scale(0.95); filter: blur(75px); }
-  100% { transform: translate(0, 0) scale(1); filter: blur(80px); }
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(-40px, 25px) scale(1.06); }
+  66%  { transform: translate(25px, -18px) scale(0.96); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
 @keyframes blobdrift2 {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, -20px) scale(1.05); }
+  50%       { transform: translate(35px, -25px) scale(1.04); }
 }
 
 @keyframes blobdrift3 {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-20px, 20px) scale(0.95); }
+  50%       { transform: translate(-25px, 25px) scale(0.96); }
 }
 
 @keyframes blobdrift4 {
   0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(60px, 40px); }
+  50%       { transform: translate(70px, 50px); }
 }
 
 .hero-grain {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.025;
+  opacity: 0.018;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
 }
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   STATS TICKER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .stats-bar {
-  background: #1a1a14;
-  color: #f5f0e8;
+  background: #0d0d08;
+  color: #f4efe6;
   overflow: hidden;
-  border-top: 2px solid #2dba6e;
+  /* OkAlpha uses ink rules, not green borders */
+  border-top: 1px solid rgba(244, 239, 230, 0.06);
 }
 
 .stats-track {
   display: flex;
   align-items: center;
-  animation: statsroll 28s linear infinite;
+  animation: statsroll 32s linear infinite;
   white-space: nowrap;
   width: max-content;
 }
@@ -100,53 +106,73 @@
 .stat-item {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 1.1rem 3rem;
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 0.75rem;
+  padding: 1.2rem 3.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .stat-item .n {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 1.5rem;
-  font-style: italic;
-  color: #00e676;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #10b981;
 }
 
 .stat-item .l {
   font-family: "Martian Mono", monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(244, 239, 230, 0.35);
 }
 
 @keyframes statsroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
-/* Directional scroll reveal variants */
-.rev { opacity: 0; transform: translateY(32px); }
-.rev-left { opacity: 0; transform: translateX(-40px); }
-.rev-right { opacity: 0; transform: translateX(40px); }
-.rev-scale { opacity: 0; transform: scale(0.92); }
-.rev-clip { clip-path: inset(0 0 100% 0); opacity: 1; }
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SCROLL REVEAL ANIMATIONS — OkAlpha style
+   Standard: fade-up 60px / OkAlpha big-slide
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-.rev, .rev-left, .rev-right, .rev-scale {
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+/* Classic fade-up */
+.rev       { opacity: 0; transform: translateY(32px); }
+/* OkAlpha-style large slide up */
+.rev-up    { opacity: 0; transform: translateY(64px); }
+/* Directional */
+.rev-left  { opacity: 0; transform: translateX(-40px); }
+.rev-right { opacity: 0; transform: translateX(40px); }
+/* Scale */
+.rev-scale { opacity: 0; transform: scale(0.93); }
+/* Clip wipe — used for display headings like OkAlpha */
+.rev-clip  { clip-path: inset(0 0 100% 0); opacity: 1; }
+
+.rev, .rev-up, .rev-left, .rev-right, .rev-scale {
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .rev-clip {
   transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.rev.in, .rev-left.in, .rev-right.in, .rev-scale.in { opacity: 1; transform: none; }
+/* Stagger delay helpers */
+.rev-d1 { transition-delay: 0.05s; }
+.rev-d2 { transition-delay: 0.12s; }
+.rev-d3 { transition-delay: 0.2s; }
+.rev-d4 { transition-delay: 0.3s; }
+
+.rev.in, .rev-up.in, .rev-left.in, .rev-right.in, .rev-scale.in {
+  opacity: 1;
+  transform: none;
+}
 .rev-clip.in { clip-path: inset(0 0 0% 0); }
 
-/* Internship Terminal Enhancements */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   INTERNSHIP CARDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .icard-body::before {
   content: "";
   position: absolute;
@@ -161,13 +187,14 @@
   pointer-events: none;
   z-index: 1;
 }
-
 .icard { transition: box-shadow 0.4s; }
 .icard:hover {
-  box-shadow: 0 24px 64px rgba(26, 26, 20, 0.18), 0 0 0 1px rgba(45, 186, 110, 0.15), 0 0 40px rgba(45, 186, 110, 0.06);
+  box-shadow: 0 0 0 1px rgba(45, 186, 110, 0.3), 0 24px 48px rgba(13, 13, 8, 0.15);
 }
 
-/* Submit button upgrade */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SUBMIT BUTTON SHIMMER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .cf-submit {
   position: relative;
   overflow: hidden;
@@ -182,6 +209,9 @@
 }
 .cf-submit:hover::before { transform: translateX(100%); }
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   UTILITY ANIMATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @keyframes shake {
   10%, 90% { transform: translateX(-2px); }
   20%, 80% { transform: translateX(4px); }
@@ -190,5 +220,9 @@
 }
 @keyframes scaleIn {
   from { transform: scale(0); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  to   { transform: scale(1); opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

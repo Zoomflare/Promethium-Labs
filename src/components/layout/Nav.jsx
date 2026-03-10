@@ -2,84 +2,98 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const links = [
-  { to: "/", label: "Home", id: "home" },
-  { to: "/services", label: "Services", id: "services" },
-  { to: "/internships", label: "Internships", id: "internships" },
-  { to: "/about", label: "About", id: "about" },
-  { to: "/contact", label: "Contact", id: "contact" },
+  { to: "/", label: "Home" },
+  { to: "/services", label: "Services" },
+  { to: "/internships", label: "Internships" },
+  { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
 ];
+
+// Pages with dark (ink) backgrounds — nav needs cream text
+const DARK_BG_ROUTES = ["/services", "/internships"];
 
 const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
   const location = useLocation();
 
+  const isDarkPage = DARK_BG_ROUTES.some(r => location.pathname.startsWith(r));
+
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 80);
-
-      // Active link detection for sections on the home page or general page tracking
-      const sections = document.querySelectorAll("section[id], div[id]");
-      let current = "";
-      sections.forEach((section) => {
-        const top = section.offsetTop - 120;
-        if (window.scrollY >= top) {
-          current = section.getAttribute("id");
-        }
-      });
-      setActiveSection(current);
-    };
-
+    const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // On dark-bg pages: always cream text, frosted dark bg when scrolled
+  // On light-bg pages: ink text, cream bg when scrolled
+  const navBg = isDarkPage
+    ? scrolled ? "rgba(13,13,8,0.95)" : "transparent"
+    : scrolled ? "#f4efe6" : "transparent";
+
+  const textColor = isDarkPage ? "#f4efe6" : "#0d0d08";
+  const logoAccent = "#10b981";
+  const hireColor = isDarkPage ? "text-cream" : "text-cream";
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 w-full pointer-events-none">
-      <nav
-        className={[
-          "mx-auto flex max-w-6xl items-center justify-between transition-all duration-400 cubic-bezier(0.16, 1, 0.3, 1) pointer-events-auto",
-          scrolled
-            ? "py-4 px-16 bg-cream/98 backdrop-blur-md shadow-[0_1px_0_rgba(26,26,20,0.08)]"
-            : "py-8 px-16 bg-transparent",
-          "max-md:px-6",
-        ].join(" ")}
-      >
+    <header
+      className="fixed inset-x-0 top-0 z-50 w-full pointer-events-none transition-all duration-300"
+      style={{
+        background: navBg,
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        borderBottom: scrolled
+          ? isDarkPage
+            ? "1px solid rgba(244,239,230,0.08)"
+            : "1px solid rgba(13,13,8,0.1)"
+          : "1px solid transparent",
+      }}
+    >
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-8 py-5 pointer-events-auto max-md:px-5">
+        {/* Logo */}
         <NavLink
           to="/"
-          className="font-serif text-xl tracking-tight hover:text-ink transition-colors"
+          className="font-sans font-black text-lg tracking-[-0.03em] transition-colors duration-200"
+          style={{ color: textColor }}
         >
-          <span>Promethium</span>
-          <span className="text-greenMid">.</span>
-          <span>Labs</span>
+          Promethium
+          <span style={{ color: logoAccent }}>.</span>
+          Labs
         </NavLink>
 
-        <div className="hidden gap-8 md:flex text-[0.62rem] font-mono uppercase tracking-[0.12em] text-gray">
+        {/* Links */}
+        <div className="hidden gap-10 md:flex">
           {links.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
                 [
-                  "nav-link relative flex items-center gap-1 transition-colors duration-200",
-                  isActive || activeSection === link.id ? "text-ink active" : "hover:text-ink",
+                  "nav-link text-[0.78rem] font-sans font-medium tracking-[0.02em] transition-colors duration-200",
+                  isActive ? "active" : "",
                 ].join(" ")
               }
+              style={({ isActive }) => ({
+                color: isActive
+                  ? isDarkPage ? "#f4efe6" : "#0d0d08"
+                  : isDarkPage ? "rgba(244,239,230,0.55)" : "#7a7468",
+              })}
             >
-              <span>{link.label}</span>
-              {(location.pathname === link.to || activeSection === link.id) && (
-                <span className="ml-1 inline-block h-1.5 w-1.5 rounded-full bg-greenMid animate-scaleIn" />
-              )}
+              {link.label}
             </NavLink>
           ))}
         </div>
 
+        {/* CTA */}
         <NavLink
           to="/contact"
-          className="nav-btn hidden md:inline-flex items-center rounded-[2px] bg-ink text-cream px-6 py-3 text-xs font-mono uppercase tracking-[0.14em] transition-all duration-300 hover:bg-greenMid"
+          className="hidden md:inline-flex items-center gap-2 text-cream text-[0.72rem] font-sans font-bold tracking-[0.1em] uppercase px-5 py-[0.65rem] transition-all duration-300"
+          style={{
+            background: isDarkPage ? "#10b981" : "#0d0d08",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = "#10b981")}
+          onMouseLeave={(e) => (e.currentTarget.style.background = isDarkPage ? "#10b981" : "#0d0d08")}
         >
-          Hire Us
+          Hire Us →
         </NavLink>
       </nav>
     </header>
@@ -87,4 +101,3 @@ const Nav = () => {
 };
 
 export default Nav;
-

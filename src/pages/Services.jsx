@@ -1,96 +1,100 @@
 import { useEffect } from "react";
-import { useMagnetic } from "../hooks/useMagnetic";
 
 const services = [
   {
     id: "01",
     title: "Student Internships",
     eyebrow: "Built like a first job",
-    body: "You don’t make coffee. You don’t sit in fake “shadowing” calls. You work on live projects, with real constraints, real deadlines, and real mentorship.",
+    body: "You don't make coffee. You don't sit in fake 'shadowing' calls. You work on live projects, with real constraints, real deadlines, and real mentorship.",
     bullets: [
       "Live client work from week one",
-      "1:1 mentorship from people who’ve actually shipped",
-      "Portfolio pieces that aren’t made up",
+      "1:1 mentorship from people who have actually shipped",
+      "Portfolio pieces that are not made up",
       "Flexible duration: 4–12 weeks",
       "Stipends for top performers",
     ],
-    tag: "View open roles →",
+    tag: "View open roles",
     href: "/internships",
   },
   {
     id: "02",
     title: "Digital Marketing",
     eyebrow: "Zero vanity metrics",
-    body: "We don’t chase impressions for a slide deck. We care about the numbers that pay rent: revenue, qualified leads, and retention.",
+    body: "We don't chase impressions for a slide deck. We care about the numbers that pay rent: revenue, qualified leads, and retention.",
     bullets: [
       "Search: SEO audits & content engines",
       "Performance: paid search & paid social",
       "Social: channels that sound human",
       "Analytics: clear dashboards, honest reporting",
     ],
-    tag: "Talk growth →",
+    tag: "Talk growth",
     href: "/contact",
   },
   {
     id: "03",
     title: "Product Development",
-    eyebrow: "From Figma to “it’s live”",
-    body: "We help you go from idea → prototype → product without disappearing for six months and coming back with something you never asked for.",
+    eyebrow: "From Figma to 'it is live'",
+    body: "We help you go from idea to prototype to product without disappearing for six months and coming back with something you never asked for.",
     bullets: [
       "MVPs & first versions",
       "SaaS dashboards & internal tools",
       "Marketing sites & systems",
-      "Post‑launch support & iteration",
+      "Post-launch support & iteration",
     ],
-    tag: "Scope a build →",
+    tag: "Scope a build",
     href: "/contact",
   },
 ];
 
-const ServiceCard = ({ svc, index }) => {
-  const magneticRef = useMagnetic(0.2);
-
+const ServiceRow = ({ svc, index }) => {
   return (
-    <article
-      className={`svc-panel group relative border-b border-white/5 bg-gradient-to-b from-white/0 to-white/[0.02] px-6 py-10 md:px-8 md:py-14 transition-colors duration-500 hover:bg-white/[0.03] rev rev-d${index + 1}`}
+    <a
+      href={svc.href}
+      className="svc-row group"
     >
-      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-greenMid to-greenBright opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="flex items-center justify-between text-[0.6rem] font-mono uppercase tracking-[0.12em] text-cream/30">
-        <span className="svc-num transition-all duration-300 group-hover:text-greenMid group-hover:translate-x-1">
-          {svc.id} / 03
+      {/* Left: Number + Title */}
+      <div className="flex items-baseline gap-6 min-w-0">
+        <span
+          className="font-mono text-[0.55rem] tracking-[0.14em] uppercase shrink-0 transition-colors duration-300"
+          style={{ color: "rgba(244,239,230,0.3)" }}
+        >
+          {svc.id}
         </span>
+        <div>
+          <p
+            className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-greenMid mb-2 group-hover:text-cream/70 transition-colors duration-300"
+          >
+            {svc.eyebrow}
+          </p>
+          <span className="svc-row-title">{svc.title}</span>
+        </div>
       </div>
-      <p className="mt-6 text-[0.7rem] font-mono uppercase tracking-[0.18em] text-greenMid">
-        {svc.eyebrow}
-      </p>
-      <h2 className="mt-3 font-serif text-[clamp(1.5rem,2.5vw,2rem)] font-light leading-none tracking-[-0.02em] text-cream group-hover:text-greenMid transition-colors">
-        {svc.title}
-      </h2>
-      <p className="mt-4 text-sm text-cream/60 leading-relaxed">
-        {svc.body}
-      </p>
-      <ul className="mt-6 space-y-1.5 text-[0.8rem] text-cream/55">
+
+      {/* Right: Tag + Arrow */}
+      <div className="flex items-center gap-6 shrink-0">
+        <span className="svc-row-tag hidden md:inline-flex">{svc.tag}</span>
+        <span className="svc-row-arrow">↗</span>
+      </div>
+    </a>
+  );
+};
+
+// Expanded detail panel shown below the service list
+const ServiceDetail = ({ svc }) => (
+  <div className="px-8 md:px-16 py-14 border-t border-white/[0.06] bg-ink/50 rev">
+    <div className="mx-auto max-w-7xl grid md:grid-cols-2 gap-12">
+      <p className="text-cream/60 text-[0.95rem] leading-[1.85] font-light">{svc.body}</p>
+      <ul className="space-y-3">
         {svc.bullets.map((item) => (
-          <li key={item} className="flex items-start gap-2">
-            <span className="mt-[0.25rem] h-[3px] w-[3px] rounded-full bg-greenMid" />
-            <span>{item}</span>
+          <li key={item} className="flex items-start gap-3 text-[0.85rem] text-cream/55">
+            <span className="mt-[5px] h-[3px] w-[3px] rounded-full bg-greenMid shrink-0" />
+            {item}
           </li>
         ))}
       </ul>
-      <a
-        href={svc.href}
-        ref={magneticRef}
-        className="mt-7 inline-flex items-center gap-2 text-[0.72rem] font-mono uppercase tracking-[0.14em] text-greenMid/80 hover:text-greenBright transition-colors"
-      >
-        {svc.tag}
-      </a>
-      {/* radial glow on hover */}
-      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        <div className="absolute -inset-10 bg-[radial-gradient(circle,rgba(45,186,110,0.06),transparent_70%)] blur-3xl" />
-      </div>
-    </article>
-  );
-};
+    </div>
+  </div>
+);
 
 const ServicesPage = () => {
   useEffect(() => {
@@ -98,56 +102,60 @@ const ServicesPage = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Staggering is handled by CSS classes rev-d1, rev-d2
-            setTimeout(() => {
-              entry.target.classList.add("in");
-            }, 0);
+            entry.target.classList.add("in");
             revObs.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
-
-    document.querySelectorAll(".rev, .rev-left, .rev-right, .rev-clip").forEach((el) => {
-      revObs.observe(el);
-    });
-
+    document
+      .querySelectorAll(".rev, .rev-up, .rev-left, .rev-right, .rev-clip")
+      .forEach((el) => revObs.observe(el));
     return () => revObs.disconnect();
   }, []);
 
   return (
-    <main className="bg-ink text-cream min-h-screen">
-      {/* Hero */}
-      <section className="px-6 pt-32 pb-20 md:px-16 overflow-hidden">
-        <div className="mx-auto max-w-5xl space-y-8">
-          <p className="rev-left font-mono text-[0.65rem] uppercase tracking-[0.18em] text-greenMid">
+    <main style={{ background: "#0d0d08", color: "#f4efe6" }} className="min-h-screen">
+
+      {/* ── HERO ───────────────────────────────────────── */}
+      <section className="px-8 md:px-16 pt-36 pb-20 max-md:px-6">
+        <div className="mx-auto max-w-7xl">
+          <p className="rev-left font-mono text-[0.6rem] uppercase tracking-[0.2em] text-greenMid mb-8">
             Services
           </p>
-          <h1 className="services-h font-serif text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.04] tracking-[-0.035em] rev-clip">
+          <h1 className="section-h text-[clamp(3rem,8vw,7rem)] rev-up mb-8">
             What we do,
             <br />
-            <span className="italic text-greenMid">and how.</span>
+            <span style={{ color: "#10b981" }}>and how.</span>
           </h1>
-          <p className="rev max-w-2xl text-sm md:text-base text-cream/70 leading-relaxed">
-            Three things, done with unreasonable care: internships that actually
-            train you, marketing that moves real numbers, and products that
-            don’t fall apart the moment they go live.
-          </p>
+          {/* OkAlpha rule below hero text */}
+          <div className="rule-top-dark pt-8">
+            <p className="rev max-w-2xl text-cream/55 text-[0.95rem] leading-[1.85] font-light">
+              Three things, done with unreasonable care: internships that actually train you,
+              marketing that moves real numbers, and products that don&apos;t fall apart the moment
+              they go live.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Services grid */}
-      <section className="border-t border-white/5 bg-ink">
-        <div className="mx-auto grid max-w-6xl border-x border-white/5 md:grid-cols-3">
-          {services.map((svc, idx) => (
-            <ServiceCard key={svc.id} svc={svc} index={idx} />
-          ))}
-        </div>
+      {/* ── SERVICE ROWS — OkAlpha list rows ─────────── */}
+      <section className="mx-auto max-w-7xl px-8 md:px-16 pb-4 max-md:px-6">
+        {services.map((svc, idx) => (
+          <ServiceRow key={svc.id} svc={svc} index={idx} />
+        ))}
       </section>
+
+      {/* ── SERVICE DETAIL PANELS ────────────────────── */}
+      <section style={{ borderTop: "1px solid rgba(244,239,230,0.06)" }} className="mt-4">
+        {services.map((svc) => (
+          <ServiceDetail key={svc.id} svc={svc} />
+        ))}
+      </section>
+
     </main>
   );
 };
 
 export default ServicesPage;
-

@@ -5,7 +5,7 @@ export const tokens = {
   ink2: "#1a1a12",
   green: "#00e676",
   greenDark: "#00b85a",
-  greenMid: "#2dba6e",
+  greenMid: "#10b981",
   greenPale: "#d4f0dc",
   gray: "#7a7468",
   gray2: "#b0a89e",

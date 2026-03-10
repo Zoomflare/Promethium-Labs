@@ -8,6 +8,7 @@ export default {
         ink: "#0d0d08",
         ink2: "#1a1a12",
         green: "#00e676",
+        greenBright: "#00e676",
         greenDark: "#00b85a",
         greenMid: "#2dba6e",
         greenPale: "#d4f0dc",
