@@ -128,22 +128,32 @@ const InternshipsPage = () => {
   return (
     <main style={{ background: "#0d0d08", color: "#f4efe6" }} className="min-h-screen overflow-x-hidden">
 
-      {/* ── HERO: full-viewport with office photo ─────────── */}
-      <section className="relative min-h-screen flex flex-col justify-end px-8 md:px-16 pb-20 max-md:px-6">
-        {/* Background photo with dark overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/internship-hero.png"
-            alt="Promethium Labs intern workspace"
-            className="w-full h-full object-cover"
-            style={{ filter: "brightness(0.35) saturate(1.2)" }}
-          />
-          {/* Gradient fade from photo to page bottom */}
-          <div
-            className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, rgba(13,13,8,0.1) 0%, rgba(13,13,8,0.6) 60%, #0d0d08 100%)" }}
-          />
-        </div>
+      {/* ── HERO: full-viewport dark, no image ─────────── */}
+      <section className="relative min-h-screen flex flex-col justify-end px-8 md:px-16 pb-20 max-md:px-6 overflow-hidden">
+
+        {/* Decorative emerald glow blob — purely CSS, no img */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            width: "600px",
+            height: "600px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(16,185,129,0.18) 0%, rgba(16,185,129,0) 70%)",
+            top: "-100px",
+            right: "-100px",
+          }}
+        />
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            width: "300px",
+            height: "300px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%)",
+            bottom: "20%",
+            left: "-80px",
+          }}
+        />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl">
           <p className="rev-left font-mono text-[0.6rem] uppercase tracking-[0.2em] mb-8" style={{ color: "#10b981" }}>
