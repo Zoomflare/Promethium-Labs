@@ -1,52 +1,54 @@
 import { useEffect } from "react";
+import { useSEO } from "../hooks/useSEO.js";
 
 const services = [
   {
     id: "01",
-    title: "Student Internships",
-    eyebrow: "Built like a first job",
-    body: "You don't make coffee. You don't sit in fake 'shadowing' calls. You work on live projects, with real constraints, real deadlines, and real mentorship.",
+    title: "AI & Software Development",
+    eyebrow: "From idea to live product",
+    body: "We build custom software and AI solutions for startups, businesses, and developers. Web applications, APIs, automation systems, and AI-powered tools — shipped with care and built to scale.",
     bullets: [
-      "Live client work from week one",
-      "1:1 mentorship from people who have actually shipped",
-      "Portfolio pieces that are not made up",
-      "Flexible duration: 4–12 weeks",
-      "Stipends for top performers",
+      "Web application development (full-stack)",
+      "APIs and backend systems",
+      "AI integrations and automation tools",
+      "SaaS dashboards and internal tools",
+      "Post-launch support and iteration",
     ],
-    tag: "View open roles",
-    href: "/internships",
+    tag: "Start a project",
+    href: "/contact",
   },
   {
     id: "02",
     title: "Digital Marketing",
     eyebrow: "Zero vanity metrics",
-    body: "We don't chase impressions for a slide deck. We care about the numbers that pay rent: revenue, qualified leads, and retention.",
+    body: "We don't chase impressions for a slide deck. We care about numbers that matter: revenue, qualified leads, and retention. Data-driven campaigns that actually grow your business.",
     bullets: [
-      "Search: SEO audits & content engines",
-      "Performance: paid search & paid social",
-      "Social: channels that sound human",
-      "Analytics: clear dashboards, honest reporting",
+      "SEO audits and content strategy",
+      "Social media marketing",
+      "Content marketing and copywriting",
+      "Growth strategy and analytics",
     ],
     tag: "Talk growth",
     href: "/contact",
   },
   {
     id: "03",
-    title: "Product Development",
-    eyebrow: "From Figma to 'it is live'",
-    body: "We help you go from idea to prototype to product without disappearing for six months and coming back with something you never asked for.",
+    title: "Internship Program",
+    eyebrow: "Built like a first job",
+    body: "A learning-focused program designed for students and freshers. You work on real projects, get mentored by the core team, and leave with a portfolio that actually proves something.",
     bullets: [
-      "MVPs & first versions",
-      "SaaS dashboards & internal tools",
-      "Marketing sites & systems",
-      "Post-launch support & iteration",
+      "Real project experience from day one",
+      "Mentorship from the development team",
+      "Certificate of completion",
+      "Duration: 8–12 weeks",
+      "Open to students and self-taught developers",
     ],
-    tag: "Scope a build",
-    href: "/contact",
+    tag: "View open roles",
+    href: "/careers",
   },
 ];
 
-const ServiceRow = ({ svc, index }) => {
+const ServiceRow = ({ svc }) => {
   return (
     <a
       href={svc.href}
@@ -79,7 +81,6 @@ const ServiceRow = ({ svc, index }) => {
   );
 };
 
-// Expanded detail panel shown below the service list
 const ServiceDetail = ({ svc }) => (
   <div className="px-8 md:px-16 py-14 border-t border-white/[0.06] bg-ink/50 rev">
     <div className="mx-auto max-w-7xl grid md:grid-cols-2 gap-12">
@@ -97,6 +98,11 @@ const ServiceDetail = ({ svc }) => (
 );
 
 const ServicesPage = () => {
+  useSEO({
+    title: "Services",
+    description: "Promethium Labs offers AI & Software Development, Digital Marketing, and an Internship Program. Custom AI tools, web apps, SEO, social media, and mentored internships.",
+    keywords: "AI development, software development, digital marketing, internship program Chennai",
+  });
   useEffect(() => {
     const revObs = new IntersectionObserver(
       (entries) => {
@@ -129,12 +135,11 @@ const ServicesPage = () => {
             <br />
             <span style={{ color: "#10b981" }}>and how.</span>
           </h1>
-          {/* OkAlpha rule below hero text */}
           <div className="rule-top-dark pt-8">
             <p className="rev max-w-2xl text-cream/55 text-[0.95rem] leading-[1.85] font-light">
-              Three things, done with unreasonable care: internships that actually train you,
-              marketing that moves real numbers, and products that don&apos;t fall apart the moment
-              they go live.
+              Three things, done with unreasonable care: AI and software products built to scale,
+              digital marketing that moves real numbers, and an internship program where students
+              actually learn by doing.
             </p>
           </div>
         </div>
@@ -152,6 +157,38 @@ const ServicesPage = () => {
         {services.map((svc) => (
           <ServiceDetail key={svc.id} svc={svc} />
         ))}
+      </section>
+
+      {/* ── CTA ───────────────────────────────────────── */}
+      <section className="px-8 md:px-16 py-24 max-md:px-6" style={{ borderTop: "1px solid rgba(244,239,230,0.06)" }}>
+        <div className="mx-auto max-w-7xl flex flex-col md:flex-row md:items-end justify-between gap-12">
+          <div>
+            <p className="font-mono text-[0.6rem] uppercase tracking-[0.2em] mb-4" style={{ color: "rgba(244,239,230,0.3)" }}>Ready?</p>
+            <h2 className="display-h rev-up" style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#f4efe6" }}>
+              Let&apos;s work together.
+            </h2>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-3 font-sans font-bold text-[0.75rem] tracking-[0.1em] uppercase px-8 py-4 transition-all duration-300"
+              style={{ background: "#10b981", color: "#0d0d08" }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "#34d399")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "#10b981")}
+            >
+              Start a project →
+            </a>
+            <a
+              href="/careers"
+              className="inline-flex items-center gap-3 font-sans font-bold text-[0.75rem] tracking-[0.1em] uppercase px-8 py-4 transition-all duration-300"
+              style={{ border: "1px solid rgba(244,239,230,0.2)", color: "#f4efe6" }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#10b981"; e.currentTarget.style.color = "#10b981"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(244,239,230,0.2)"; e.currentTarget.style.color = "#f4efe6"; }}
+            >
+              Join the team →
+            </a>
+          </div>
+        </div>
       </section>
 
     </main>

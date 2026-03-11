@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 
 const links = [
   { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
-  { to: "/internships", label: "Internships" },
+  { to: "/projects", label: "Projects" },
+  { to: "/learn", label: "Learn" },
+  { to: "/careers", label: "Careers" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ];
 
-const DARK_BG_ROUTES = ["/services", "/internships"];
+const DARK_BG_ROUTES = ["/services", "/careers", "/projects"];
 
 const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -95,7 +96,7 @@ const Nav = () => {
             onMouseEnter={(e) => (e.currentTarget.style.background = "#059669")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "#10b981")}
           >
-            Hire Us →
+            Work With Us →
           </NavLink>
 
           {/* Mobile Hamburger */}
@@ -197,7 +198,7 @@ const Nav = () => {
             onTouchStart={(e) => (e.currentTarget.style.background = "#059669")}
             onTouchEnd={(e) => (e.currentTarget.style.background = "#10b981")}
           >
-            Hire Us — Start a Project →
+            Work With Us →
           </NavLink>
           <p
             className="mt-6 font-mono text-[0.55rem] uppercase tracking-[0.2em]"
