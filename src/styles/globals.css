@@ -383,3 +383,48 @@
   color: rgba(255, 255, 255, 0.35);
   transform: translateY(-2px);
 }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MOBILE RESPONSIVE — Global
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Reduce animation travel on mobile for smoother feel */
+@media (max-width: 768px) {
+  .rev       { transform: translateY(20px); }
+  .rev-up    { transform: translateY(36px); }
+  .rev-left  { transform: translateX(-24px); }
+  .rev-right { transform: translateX(24px); }
+
+  /* Section padding */
+  section {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  /* Contact page — stack vertically */
+  .ct-form {
+    padding: 2.5rem 1.25rem;
+  }
+
+  /* Hero headings — prevent overflow */
+  .display-h {
+    word-break: break-word;
+  }
+
+  /* Job card expanded panel — remove heavy left indent */
+  .job-expand-panel {
+    padding-left: 0 !important;
+  }
+
+  /* FAQ indent on mobile */
+  .faq-answer {
+    padding-left: 0 !important;
+  }
+}
+
+/* Touch screens: disable hover-dependent nav link styles that cause FOUC */
+@media (hover: none) {
+  .svc-row:hover {
+    padding-left: 1.5rem;
+  }
+}

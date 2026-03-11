@@ -250,7 +250,7 @@ const FAQItem = ({ q, a, i }) => {
         className="overflow-hidden transition-all duration-400"
         style={{ maxHeight: open ? "200px" : "0", opacity: open ? 1 : 0 }}
       >
-        <p className="pl-10 pb-6 text-[0.9rem] leading-[1.85] font-light" style={{ color: "rgba(244,239,230,0.5)" }}>
+        <p className="faq-answer pl-0 sm:pl-10 pb-6 text-[0.9rem] leading-[1.85] font-light" style={{ color: "rgba(244,239,230,0.5)" }}>
           {a}
         </p>
       </div>
@@ -319,7 +319,7 @@ const JobCard = ({ role, i }) => {
         className="overflow-hidden transition-all duration-500"
         style={{ maxHeight: expanded ? "900px" : "0", opacity: expanded ? 1 : 0 }}
       >
-        <div className="pl-12 pb-10 grid md:grid-cols-2 gap-10">
+        <div className="job-expand-panel pl-0 md:pl-12 pb-10 grid md:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div>
               <p className="font-mono text-[0.58rem] uppercase tracking-[0.14em] mb-3" style={{ color: "#10b981" }}>About the role</p>
@@ -418,7 +418,7 @@ const CareersPage = () => {
         <div className="absolute pointer-events-none" style={{ width: "600px", height: "600px", borderRadius: "50%", background: "radial-gradient(circle, rgba(16,185,129,0.18) 0%, rgba(16,185,129,0) 70%)", top: "-100px", right: "-100px" }} />
         <div className="absolute pointer-events-none" style={{ width: "300px", height: "300px", borderRadius: "50%", background: "radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%)", bottom: "20%", left: "-80px" }} />
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl">
+        <div className="relative z-10 mx-auto w-full max-w-7xl pt-28 md:pt-0">
           <p className="rev-left font-mono text-[0.6rem] uppercase tracking-[0.2em] mb-8" style={{ color: "#10b981" }}>
             Careers at Promethium Labs
           </p>
@@ -452,7 +452,7 @@ const CareersPage = () => {
               <a
                 href="#open-roles"
                 ref={careersCtaRef}
-                className="inline-flex items-center gap-3 font-sans font-bold text-[0.75rem] tracking-[0.1em] uppercase px-8 py-4 transition-all duration-300 self-start"
+                className="inline-flex items-center gap-3 font-sans font-bold text-[0.75rem] tracking-[0.1em] uppercase px-8 py-4 transition-all duration-300 self-start w-full md:w-auto justify-center md:justify-start"
                 style={{ background: "#10b981", color: "#0d0d08" }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = "#34d399")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "#10b981")}
@@ -564,7 +564,7 @@ const CareersPage = () => {
                   </div>
                 </div>
               </div>
-              <span className="text-2xl shrink-0 mt-1 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" style={{ color: "rgba(244,239,230,0.2)" }}>↗</span>
+              <span className="text-2xl shrink-0 mt-1 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 hidden sm:block" style={{ color: "rgba(244,239,230,0.2)" }}>↗</span>
             </a>
           ))}
           <div style={{ borderTop: "1px solid rgba(244,239,230,0.06)" }} />
