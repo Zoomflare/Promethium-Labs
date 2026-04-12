@@ -31,6 +31,12 @@ export const useLenis = () => {
 
     frameId = requestAnimationFrame(raf);
 
+    // Recalculate scroll height when DOM changes (lazy-loaded pages)
+    const resizeObserver = new ResizeObserver(() => {
+      lenis.resize();
+    });
+    resizeObserver.observe(document.body);
+
     // Smooth scroll for anchor links
     const handleAnchorClick = (e) => {
       const target = e.target.closest('a[href^="#"]');
@@ -59,6 +65,7 @@ export const useLenis = () => {
 
     return () => {
       cancelAnimationFrame(frameId);
+      resizeObserver.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
       document.removeEventListener("click", handleAnchorClick);
       lenis.destroy();

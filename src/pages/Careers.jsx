@@ -128,10 +128,10 @@ const internRoles = [
 ];
 
 const faqs = [
-  {
-    q: "Is the internship paid?",
-    a: "Top performers receive a stipend. All interns receive a verified certificate of completion backed by shipped work, not just attendance.",
-  },
+  // {
+  //   q: "Is the internship paid?",
+  //   a: "Top performers receive a stipend. All interns receive a verified certificate of completion backed by shipped work, not just attendance.",
+  // },
   {
     q: "What is the internship duration?",
     a: "8–12 weeks depending on the role and project scope. We're flexible — we discuss start dates and timelines together.",
