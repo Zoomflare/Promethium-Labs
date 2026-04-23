@@ -143,6 +143,7 @@ const ContactPage = () => {
                 href="https://github.com/promethiumlabs"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit Promethium Labs on GitHub (opens in new tab)"
                 className="text-[0.7rem] font-mono uppercase tracking-[0.1em] border border-ink/15 px-4 py-2.5 text-ink/50 hover:border-greenMid hover:text-greenMid transition-all duration-200"
               >
                 GitHub ↗
@@ -170,7 +171,7 @@ const ContactPage = () => {
                   </div>
                 )}
 
-                <form className="space-y-8" onSubmit={handleSubmit}>
+                <form className="space-y-8" onSubmit={handleSubmit} aria-label="Contact form">
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div className="cf-g">
                       <input
@@ -217,6 +218,7 @@ const ContactPage = () => {
                     <select
                       id="sv"
                       onChange={handleInputChange}
+                      aria-label="Select a service you're interested in"
                       className="w-full border-b border-cream/15 bg-transparent py-2.5 text-[0.9rem] text-cream/60 outline-none focus:border-greenMid transition-colors"
                     >
                       <option value="" className="bg-ink">I&apos;m interested in...</option>
@@ -254,7 +256,7 @@ const ContactPage = () => {
               </>
             ) : (
               <div className="flex flex-col items-center justify-center min-h-[350px] text-center gap-6 animate-[fadeIn_0.5s_ease]">
-                <div className="w-14 h-14 border border-greenMid flex items-center justify-center text-xl text-greenMid">
+                <div className="w-14 h-14 border border-greenMid flex items-center justify-center text-xl text-greenMid" role="img" aria-label="Success checkmark">
                   ✓
                 </div>
                 <div className="section-h text-[2rem] text-cream">We got it.</div>
