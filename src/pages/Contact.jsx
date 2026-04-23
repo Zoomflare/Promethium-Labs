@@ -74,7 +74,7 @@ const ContactPage = () => {
           reply_to: em,
           // Recipient — hardcoded so "To Email" in template always resolves
           to_name: "Promethium Labs",
-          to_email: "promethiumlabspvtltd@gmail.com",
+          to_email: "contact@promethiumlabs.in",
           email: em,                    // some templates use {{email}}
           // Message content
           service: formData.sv || "General Inquiry",
@@ -126,14 +126,14 @@ const ContactPage = () => {
 
             {/* Email link */}
             <a
-              href="mailto:promethiumlabspvtltd@gmail.com"
+              href="mailto:contact@promethiumlabs.in"
               className="group flex items-center gap-3 text-ink/80 hover:text-greenMid transition-colors duration-200 pt-2"
             >
               <span className="text-[0.65rem] font-mono uppercase tracking-[0.16em] text-gray/50">
                 Email us →
               </span>
               <span className="font-sans font-semibold text-[0.95rem] tracking-[-0.01em]">
-                promethiumlabspvtltd@gmail.com
+                contact@promethiumlabs.in
               </span>
             </a>
 
@@ -166,7 +166,7 @@ const ContactPage = () => {
                     className="mb-6 px-4 py-3 font-mono text-[0.68rem] uppercase tracking-[0.1em]"
                     style={{ border: "1px solid rgba(239,68,68,0.4)", color: "rgba(239,68,68,0.8)" }}
                   >
-                    Something went wrong. Please email us directly at promethiumlabspvtltd@gmail.com
+                    Something went wrong. Please email us directly at contact@promethiumlabs.in
                   </div>
                 )}
 
