@@ -31,6 +31,8 @@ const RotatingWord = () => {
   return (
     <span
       className="inline-block relative align-baseline"
+      role="text"
+      aria-label={words[index]}
       style={{
         width,
         minWidth: "1ch",
