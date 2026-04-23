@@ -1,12 +1,12 @@
 const Footer = () => {
   return (
-    <footer style={{ background: "#0d0d08", color: "#f4efe6" }} className="border-t border-white/[0.06]">
+    <footer role="contentinfo" style={{ background: "#0d0d08", color: "#f4efe6" }} className="border-t border-white/[0.06]">
       <div className="mx-auto max-w-7xl px-8 py-14 max-md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-10" style={{ borderBottom: "1px solid rgba(244,239,230,0.06)" }}>
 
           {/* Brand */}
           <div>
-            <a href="/" className="font-sans font-black text-lg tracking-[-0.03em] text-cream">
+            <a href="/" aria-label="Promethium Labs — Go to homepage" className="font-sans font-black text-lg tracking-[-0.03em] text-cream">
               Promethium<span style={{ color: "#10b981" }}>.</span>Labs
             </a>
             <p className="mt-3 text-[0.85rem] font-light leading-[1.7]" style={{ color: "rgba(244,239,230,0.4)" }}>
@@ -18,7 +18,7 @@ const Footer = () => {
           </div>
 
           {/* Navigation */}
-          <div>
+          <nav aria-label="Footer navigation">
             <p className="font-mono text-[0.58rem] uppercase tracking-[0.18em] mb-5" style={{ color: "rgba(244,239,230,0.3)" }}>Navigate</p>
             <div className="flex flex-col gap-3">
               {[
@@ -39,7 +39,7 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-          </div>
+          </nav>
 
           {/* Contact */}
           <div>
@@ -56,6 +56,7 @@ const Footer = () => {
                 href="https://github.com/promethiumlabs"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit Promethium Labs on GitHub (opens in new tab)"
                 className="text-[0.82rem] font-sans transition-colors duration-200 hover:text-greenMid"
                 style={{ color: "rgba(244,239,230,0.5)" }}
               >
