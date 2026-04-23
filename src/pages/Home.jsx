@@ -78,7 +78,7 @@ const Home = () => {
           <h1 className="display-h mb-10" style={{ fontSize: "clamp(3.5rem, 9.5vw, 8rem)" }}>
             <span className="block rev-up rev-d1" style={{ color: "#0d0d08" }}>We build</span>
             <span className="block rev-up rev-d2" style={{ color: "#0d0d08" }}>
-              things that&nbsp;<RotatingWord />
+              things that<span className="max-md:block">&nbsp;<RotatingWord /></span>
             </span>
           </h1>
 
