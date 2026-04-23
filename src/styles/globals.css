@@ -75,6 +75,17 @@
     text-decoration: none;
   }
 
+  /* Focus styles for keyboard navigation */
+  :focus-visible {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+  }
+
+  a:focus:not(:focus-visible),
+  button:focus:not(:focus-visible) {
+    outline: none;
+  }
+
   img, video, canvas {
     max-width: 100%;
     display: block;
