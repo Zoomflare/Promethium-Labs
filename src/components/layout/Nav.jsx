@@ -291,7 +291,7 @@ const Nav = () => {
                 </NavLink>
                 {/* Sub-links */}
                 <div style={{ paddingLeft: "1rem", borderBottom: "1px solid rgba(244,239,230,0.04)" }}>
-                  {serviceSubLinks.slice(1).map((sub, si) => (
+                  {serviceSubLinks.map((sub, si) => (
                     <NavLink
                       key={sub.to}
                       to={sub.to}
