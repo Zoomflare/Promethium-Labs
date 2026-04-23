@@ -67,6 +67,7 @@ const Nav = () => {
   return (
     <>
       <header
+        role="banner"
         className="fixed inset-x-0 top-0 z-50 w-full pointer-events-none transition-all duration-300"
         style={{
           background: menuOpen ? "#0d0d08" : navBg,
@@ -78,7 +79,7 @@ const Nav = () => {
             : "1px solid transparent",
         }}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-8 py-5 pointer-events-auto max-md:px-5">
+        <nav aria-label="Main navigation" className="mx-auto flex max-w-7xl items-center justify-between px-8 py-5 pointer-events-auto max-md:px-5">
           {/* Logo */}
           <NavLink
             to="/"
