@@ -58,13 +58,19 @@ export const useLenis = () => {
         lenis.stop();
       } else {
         lenis.start();
+        // Recalculate after tab regains focus
+        requestAnimationFrame(() => lenis.resize());
       }
     };
 
     document.addEventListener("visibilitychange", onVisibility);
 
+    // Ensure Lenis recalculates once lazy content has loaded
+    const initialResize = setTimeout(() => lenis.resize(), 500);
+
     return () => {
       cancelAnimationFrame(frameId);
+      clearTimeout(initialResize);
       resizeObserver.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
       document.removeEventListener("click", handleAnchorClick);
