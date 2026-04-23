@@ -46,11 +46,11 @@ const Footer = () => {
             <p className="font-mono text-[0.58rem] uppercase tracking-[0.18em] mb-5" style={{ color: "rgba(244,239,230,0.3)" }}>Get in touch</p>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:promethiumlabspvtltd@gmail.com"
+                href="mailto:contact@promethiumlabs.in"
                 className="text-[0.82rem] font-sans transition-colors duration-200 hover:text-greenMid"
                 style={{ color: "rgba(244,239,230,0.5)" }}
               >
-                promethiumlabspvtltd@gmail.com
+                contact@promethiumlabs.in
               </a>
               <a
                 href="https://github.com/promethiumlabs"
