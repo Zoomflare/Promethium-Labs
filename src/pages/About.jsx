@@ -131,7 +131,7 @@ const AboutPage = () => {
             </p>
             <div className="flex flex-wrap gap-6">
               <a
-                href="mailto:promethiumlabspvtltd@gmail.com"
+                href="mailto:contact@promethiumlabs.in"
                 className="inline-flex items-center gap-2 text-[0.7rem] font-mono uppercase tracking-[0.14em] text-greenMid border-b border-greenMid/40 pb-0.5 hover:border-greenMid transition-colors"
               >
                 Email us ↗
