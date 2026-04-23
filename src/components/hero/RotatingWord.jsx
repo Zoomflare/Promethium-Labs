@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const words = ["ships.", "grows.", "cares.", "wins.", "delivers."];
+const words = ["ship.", "grow.", "care.", "win.", "deliver."];
 
 const RotatingWord = () => {
   const [index, setIndex] = useState(0);
