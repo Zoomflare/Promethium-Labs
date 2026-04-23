@@ -363,7 +363,7 @@ const JobCard = ({ role, i }) => {
               </div>
             )}
             <a
-              href={`mailto:promethiumlabspvtltd@gmail.com?subject=Application — ${role.title}&body=Hi, I'd like to apply for the ${role.title} role at Promethium Labs.%0A%0AAbout me:%0A%0APortfolio/GitHub:%0A%0AWhy Promethium Labs:`}
+              href={`mailto:contact@promethiumlabs.in?subject=Application — ${role.title}&body=Hi, I'd like to apply for the ${role.title} role at Promethium Labs.%0A%0AAbout me:%0A%0APortfolio/GitHub:%0A%0AWhy Promethium Labs:`}
               className="inline-flex items-center gap-2 font-sans font-bold text-[0.72rem] tracking-[0.1em] uppercase px-6 py-3 transition-all duration-300 mt-2"
               style={{ background: "#10b981", color: "#0d0d08" }}
               onMouseEnter={(e) => (e.currentTarget.style.background = "#34d399")}
@@ -548,7 +548,7 @@ const CareersPage = () => {
           {internRoles.map((role, i) => (
             <a
               key={role.id}
-              href={`mailto:promethiumlabspvtltd@gmail.com?subject=Internship Application — ${role.title}&body=Hi, I'd like to apply for the ${role.title} internship.%0A%0AAbout me:%0A%0APortfolio/GitHub:%0A%0AWhat I want to learn:`}
+              href={`mailto:contact@promethiumlabs.in?subject=Internship Application — ${role.title}&body=Hi, I'd like to apply for the ${role.title} internship.%0A%0AAbout me:%0A%0APortfolio/GitHub:%0A%0AWhat I want to learn:`}
               className="group flex items-start justify-between py-8 transition-all duration-300 rev"
               style={{ borderTop: "1px solid rgba(244,239,230,0.06)", transitionDelay: `${i * 0.05}s` }}
             >
@@ -609,7 +609,7 @@ const CareersPage = () => {
             </p>
           </div>
           <a
-            href="mailto:promethiumlabspvtltd@gmail.com?subject=Application — Promethium Labs&body=Hi, I'd like to apply at Promethium Labs.%0A%0ARole I'm interested in:%0A%0AAbout me:%0A%0APortfolio/GitHub/LinkedIn:"
+            href="mailto:contact@promethiumlabs.in?subject=Application — Promethium Labs&body=Hi, I'd like to apply at Promethium Labs.%0A%0ARole I'm interested in:%0A%0AAbout me:%0A%0APortfolio/GitHub/LinkedIn:"
             className="rev-right inline-flex items-center gap-3 font-sans font-bold text-[0.75rem] tracking-[0.1em] uppercase px-10 py-5 shrink-0 transition-all duration-300"
             style={{ background: "#10b981", color: "#0d0d08" }}
             onMouseEnter={(e) => (e.currentTarget.style.background = "#34d399")}
